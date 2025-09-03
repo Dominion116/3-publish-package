@@ -1,19 +1,9 @@
-// #[testonly]
-// module hello_sui::hello_sui_tests{
+#[test_only]
+module hello_sui::variables_and_ptypes_tests;
 
-// use hello_sui::hello_sui;
-// use std::debug;
+use hello_sui::variables_and_ptypes;
 
-// const ENotImplemented: u64 = 0;
-
-// #[test]
-// public fun test_hello_sui() {
-    
-// }
-
-// #[test, expected_failure(abort_code = ::hello_sui::hello_sui_tests::ENotImplemented)]
-// fun test_hello_sui_fail() {
-//     abort ENotImplemented
-// }
-
-// }
+#[test]
+public fun test_hello_sui() {
+    variables_and_ptypes::main();
+}
