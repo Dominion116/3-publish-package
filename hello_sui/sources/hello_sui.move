@@ -47,5 +47,54 @@ module hello_sui::basic_functions {
     }
 }
 
+module hello_sui::structs {
+    use std::debug;
+
+    public struct MyStruct {}
+
+    public struct Student {
+        age: u8,
+        isMale: bool,
+        grades: Grades,
+    }
+
+    public struct Grades {
+        math: u16,
+        eng: u16,
+    }
+
+    public fun create_student(age: u8, isMale: bool, math: u16, eng: u16) : (Student){
+        // let student1 : Student = Student{
+        //     age: student_age,
+        //     isMale: is_male,
+        //     grades: Grades{
+        //         math: math,
+        //         eng: eng,
+        //     }
+        // };
+
+        let grades: Grades = Grades{
+                math: math,
+                eng: eng,
+        };
+        let student : Student = Student{
+            age,
+            isMale,
+            grades,
+        };
+
+        student
+    }
+
+    public fun get_student (student: Student) : (u8, bool, u16, u16){
+        debug::print(&student);
+
+        student.age,
+        student.isMale,
+        student.grades.math,
+        student.grades.eng
+    }
+}
+
 
 
