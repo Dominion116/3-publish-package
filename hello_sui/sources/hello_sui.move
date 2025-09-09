@@ -52,13 +52,13 @@ module hello_sui::structs {
 
     public struct MyStruct {}
 
-    public struct Student {
+    public struct Student has drop, copy{
         age: u8,
         isMale: bool,
         grades: Grades,
     }
 
-    public struct Grades {
+    public struct Grades has drop, copy{
         math: u16,
         eng: u16,
     }
@@ -89,10 +89,7 @@ module hello_sui::structs {
     public fun get_student (student: Student) : (u8, bool, u16, u16){
         debug::print(&student);
 
-        student.age,
-        student.isMale,
-        student.grades.math,
-        student.grades.eng
+        (student.age, student.isMale, student.grades.math, student.grades.eng)
     }
 }
 
